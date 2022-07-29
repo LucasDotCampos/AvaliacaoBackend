@@ -17,5 +17,6 @@ router.get("/", (request: Request, response: Response) => {
   return response.json("rota raiz");
 });
 router.get("/lista/:sector", avaliationController.getBySector);
+router.get("/listaAvaliacoes", avaliationController.getAllAvaliation);
 
 export default router;

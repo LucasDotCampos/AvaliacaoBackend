@@ -32,5 +32,15 @@ class AvaliationController {
             return response.status(400).json(err.message);
         }
     }
+    async getAllAvaliation(request, response) {
+        try {
+            const avaliationService = new services_1.default();
+            const search = avaliationService.getAllAvaliation();
+            return response.status(200).json(search);
+        }
+        catch (err) {
+            return response.status(400).json(err.message);
+        }
+    }
 }
 exports.default = AvaliationController;

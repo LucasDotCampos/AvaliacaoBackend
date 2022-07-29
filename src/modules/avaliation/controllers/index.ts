@@ -37,6 +37,19 @@ class AvaliationController {
       return response.status(400).json(err.message);
     }
   }
+
+  public async getAllAvaliation(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    try {
+      const avaliationService = new AvaliationService();
+      const search = avaliationService.getAllAvaliation();
+      return response.status(200).json(search);
+    } catch (err) {
+      return response.status(400).json(err.message);
+    }
+  }
 }
 
 export default AvaliationController;

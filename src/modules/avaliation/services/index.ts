@@ -27,9 +27,16 @@ class AvaliationService {
       dataSource.manager.getRepository(AvaliationEntity);
     const search = avaliationRepository.find({
       where: {
-        sector,
+        sector: sector,
       },
     });
+
+    return search;
+  }
+  public async getAllAvaliation(): Promise<AvaliationEntity[]> {
+    const avaliationRepository =
+      dataSource.manager.getRepository(AvaliationEntity);
+    const search = avaliationRepository.find();
 
     return search;
   }

@@ -21,4 +21,4 @@ connection_1.dataSource
     .catch((err) => {
     console.error("Database connection error: ", err.message);
 });
-app.listen(process.env.PORT, () => console.log(`Server is working on ${process.env.PORT} port`));
+app.listen(5555, () => console.log(`Server is working on ${process.env.PORT} port`));
