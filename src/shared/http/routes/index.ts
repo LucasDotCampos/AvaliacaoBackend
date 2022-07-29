@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import { resourceLimits } from "worker_threads";
 import UserController from "../../../modules/admin/controllers";
 import AvaliationController from "../../../modules/avaliation/controllers";
 
@@ -15,5 +16,6 @@ router.post("/avaliar", avaliationController.create);
 router.get("/", (request: Request, response: Response) => {
   return response.json("rota raiz");
 });
+router.get("/lista/:sector", avaliationController.getBySector);
 
 export default router;

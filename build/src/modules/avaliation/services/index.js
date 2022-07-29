@@ -17,5 +17,14 @@ class AvaliationService {
         connection_1.dataSource.manager.save(createAvaliation);
         return createAvaliation;
     }
+    async getBySector(sector) {
+        const avaliationRepository = connection_1.dataSource.manager.getRepository(entities_1.default);
+        const search = avaliationRepository.find({
+            where: {
+                sector,
+            },
+        });
+        return search;
+    }
 }
 exports.default = AvaliationService;
