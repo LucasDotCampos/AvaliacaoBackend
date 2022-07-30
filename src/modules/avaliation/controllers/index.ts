@@ -6,7 +6,7 @@ class AvaliationController {
     try {
       const { sector, device, avaliation, company } = request.body;
 
-      if (sector && device && avaliation && company === null) {
+      if (sector || device || company || avaliation === null || "") {
         return response.status(422);
       } else {
         const avaliationService = new AvaliationService();
