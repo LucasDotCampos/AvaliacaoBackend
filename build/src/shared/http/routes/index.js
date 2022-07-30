@@ -13,9 +13,7 @@ router.post("/registrar", userController.create);
 router.post("/login", userController.authenticate);
 router.delete("/remover/:id", userController.delete);
 router.post("/avaliar", avaliationController.create);
-router.get("/", (request, response) => {
-    return response.json("rota raiz");
-});
-router.get("/lista/:sector", avaliationController.getBySector);
-router.get("/listaAvaliacoes", avaliationController.getAllAvaliation);
+router.get("/lista", avaliationController.getAllAvaliation);
+router.get("/lista/:company/:sector", avaliationController.getBySector);
+router.get("/lista/:company/:sector/:avaliation", avaliationController.getByAvaliation);
 exports.default = router;

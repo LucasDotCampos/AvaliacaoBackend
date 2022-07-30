@@ -8,14 +8,19 @@ class AvaliationController {
     async create(request, response) {
         try {
             const { sector, device, avaliation, company } = request.body;
-            const avaliationService = new services_1.default();
-            const createAvaliation = avaliationService.create({
-                sector,
-                device,
-                avaliation,
-                company,
-            });
-            return response.status(200).json(createAvaliation);
+            if (sector && device && avaliation && company === null) {
+                return response.status(422);
+            }
+            else {
+                const avaliationService = new services_1.default();
+                const createAvaliation = await avaliationService.create({
+                    sector,
+                    device,
+                    avaliation,
+                    company,
+                });
+                return response.status(200).json(createAvaliation);
+            }
         }
         catch (err) {
             return response.status(400).json(err.message);
@@ -23,9 +28,9 @@ class AvaliationController {
     }
     async getBySector(request, response) {
         try {
-            const { sector } = request.params;
+            const { company, sector } = request.params;
             const avaliationService = new services_1.default();
-            const search = avaliationService.getBySector(sector);
+            const search = await avaliationService.getBySector(company, sector);
             return response.status(200).json(search);
         }
         catch (err) {
@@ -35,7 +40,18 @@ class AvaliationController {
     async getAllAvaliation(request, response) {
         try {
             const avaliationService = new services_1.default();
-            const search = avaliationService.getAllAvaliation();
+            const search = await avaliationService.getAllAvaliation();
+            return response.status(200).json(search);
+        }
+        catch (err) {
+            return response.status(400).json(err.message);
+        }
+    }
+    async getByAvaliation(request, response) {
+        try {
+            const { company, sector, avaliation } = request.params;
+            const avaliationService = new services_1.default();
+            const search = await avaliationService.getByAvaliation(company, sector, avaliation);
             return response.status(200).json(search);
         }
         catch (err) {

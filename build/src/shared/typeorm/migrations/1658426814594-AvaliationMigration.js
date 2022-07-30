@@ -17,18 +17,22 @@ class AvaliationMigration1658426814594 {
                 {
                     name: "sector",
                     type: "varchar",
+                    isNullable: false,
                 },
                 {
                     name: "device",
                     type: "varchar",
+                    isNullable: false,
                 },
                 {
                     name: "avaliation",
                     type: "varchar",
+                    isNullable: false,
                 },
                 {
                     name: "company",
                     type: "varchar",
+                    isNullable: false,
                 },
                 {
                     name: "created_at",

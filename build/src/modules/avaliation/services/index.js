@@ -14,14 +14,26 @@ class AvaliationService {
             avaliation,
             company,
         });
-        connection_1.dataSource.manager.save(createAvaliation);
+        await connection_1.dataSource.manager.save(createAvaliation);
         return createAvaliation;
     }
-    async getBySector(sector) {
+    async getBySector(company, sector) {
         const avaliationRepository = connection_1.dataSource.manager.getRepository(entities_1.default);
         const search = avaliationRepository.find({
             where: {
-                sector: sector,
+                company,
+                sector,
+            },
+        });
+        return search;
+    }
+    getByAvaliation(company, sector, avaliation) {
+        const avaliationRepository = connection_1.dataSource.manager.getRepository(entities_1.default);
+        const search = avaliationRepository.find({
+            where: {
+                company,
+                sector,
+                avaliation,
             },
         });
         return search;
