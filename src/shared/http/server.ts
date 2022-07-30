@@ -20,6 +20,6 @@ dataSource
     console.error("Database connection error: ", err.message);
   });
 
-app.listen(5555, () =>
+app.listen(process.env.PORT, () =>
   console.log(`Server is working on ${process.env.PORT} port`)
 );
