@@ -8,7 +8,7 @@ class AvaliationController {
     async create(request, response) {
         try {
             const { sector, device, avaliation, company } = request.body;
-            if ((sector && device && company && avaliation === null) || "") {
+            if (sector === null || device === null || company === null) {
                 return response.status(422);
             }
             else {
